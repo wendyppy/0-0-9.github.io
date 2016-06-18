@@ -70,7 +70,7 @@ JB :
   #   http://s3.amazonaws.com/yoursite/themes/watermelon
   #   /assets
   #
-  ASSET_PATH : http://blog.ilanyy.com/assets/themes
+  ASSET_PATH : http://blog.ilanyy.com/assets/themes/twitter
   IMAGE_PATH : false
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
