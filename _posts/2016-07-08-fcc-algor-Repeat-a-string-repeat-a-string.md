@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Repeat a string repeat a string(FCC)"
+title: "Repeat a string repeat a string(算法)"
 keywords: ["FCC ","算法"]
 description: "FCC算法题"
 category: "FCC"
