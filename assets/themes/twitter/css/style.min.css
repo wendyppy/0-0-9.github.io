@@ -502,6 +502,7 @@ tbody tr:hover {
 .txt{
   color:#ae432e;
   background-color:#f9f2f4;
+  padding: 0 3px;
   border-radius: 4px;
 }
 code, pre {

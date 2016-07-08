@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "FCC算法基础Factorialize a Number"
+title: "FCC算法Factorialize a Number"
 keywords: ["FCC ","算法"]
 description: "FCC算法题"
 category: "FCC"
-tags: ["FCC","算法","algorithm"]
+tags: ["FCC","算法基础","algorithm"]
 ---
 {% include JB/setup %}
 
