@@ -499,6 +499,11 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
 	background-color: #e5e5e5;
 }
+.txt{
+  color:#ae432e;
+  background-color:#f9f2f4;
+  border-radius: 4px;
+}
 code, pre {
 	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 	font-size: inherit;
