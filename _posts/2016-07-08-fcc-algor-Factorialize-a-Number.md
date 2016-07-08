@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FCC算法基础Factorialize a Number(计算一个整数的阶乘)"
+title: "FCC算法基础Factorialize a Number"
 keywords: ["FCC ","算法"]
 description: "FCC算法题"
 category: "FCC"
@@ -13,9 +13,9 @@ tags: ["FCC","算法","algorithm"]
 
 如果用字母n来代表一个整数，阶乘代表着所有小于或等于n的整数的乘积。
 
-阶乘通常简写成 <span style="color:red">n!</span>
+阶乘通常简写成 <span class="txt">n!</span>
 
-例如:<span style="color:red"> 5! = 1 * 2 * 3 * 4 * 5 = 120</span>
+例如:<span class="txt"> 5! = 1 * 2 * 3 * 4 * 5 = 120</span>
 ###提示
 [Arithmetic Operators](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators)
 ###思路
@@ -31,3 +31,13 @@ function factorialize(num) {
   return temp;
 }
 </pre>
+###测试
+<span class="txt">factorialize(5)</span> 应该返回一个数字
+
+<span class="txt">factorialize(5)</span> 应该返回 120.
+
+<span class="txt">factorialize(10)</span> 应该返回 3628800.
+
+<span class="txt">factorialize(20)</span> 应该返回 2432902008176640000.
+
+<span class="txt">factorialize(0)</span> 应该返回 1.

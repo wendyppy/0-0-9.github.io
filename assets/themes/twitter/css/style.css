@@ -193,7 +193,7 @@ article header h1, article header h2 { float: left; }
 article header h1 { font-size: 213%; }
 article header h2 { font-size: 181%; }
 article section { overflow: hidden; }
-article section h2, article section h3, article section h4, article section h5 { 
+article section h2, article section h3, article section h4, article section h5 {
   margin-top: 1.0em;
   margin-bottom: .8em;
 }
@@ -306,7 +306,7 @@ button:hover {
   background: linear-gradient(to bottom, #faa796, #d06c57 5%, #943a28 100%);
   color: #fff;
 }
-button.blue { 
+button.blue {
   border-color: #1495cc #2b8ab3 #066d99;
   background: -moz-linear-gradient(top, #afe3fa, #6cb8d9 5%, #088ec8 100%);
   background: -webkit-gradient(linear, left top, left bottom, from(#afe3fa), to(#088ec8), color-stop(0.05, #6cb8d9));
@@ -325,7 +325,7 @@ button.blue:hover {
   background: linear-gradient(to bottom, #afe3fa, #6cb8d9 5%, #077bad 100%);
   color: #fff;
 }
-button.green { 
+button.green {
   border-color: #8dcc18 #7cb315 #6a9912;
   background: -moz-linear-gradient(top, #d7fa96, #abd957 5%, #78ac15 100%);
   background: -webkit-gradient(linear, left top, left bottom, from(#d7fa96), to(#78ac15), color-stop(0.05, #abd957));
@@ -732,4 +732,9 @@ pre code {
     overflow: hidden;
     white-space: nowrap;
   }
+}
+.txt{
+  color:#ae432e;
+  background-color:#f9f2f4;
+  border-radius: 4px;
 }
