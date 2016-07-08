@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FCC算法Factorialize a Number"
+title: "Factorialize a Number(FCC)"
 keywords: ["FCC ","算法"]
 description: "FCC算法题"
 category: "FCC"
