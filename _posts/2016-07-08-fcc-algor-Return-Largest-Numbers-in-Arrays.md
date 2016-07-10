@@ -17,6 +17,8 @@ tags: ["FCC","算法基础","algorithm"]
 ###思路
 用`for()`循环遍历可得到大数组中的每一项小数组。
 
+**解法一**
+
 看到“找到最大值”首先想到的当然是`sort()`方法。但`sort()`在排序时会调用数组每一项的`toString()`方法，比较的是字符串。要实现题目中比较数值的要求，我们可以给`sort()`传递一个降序排列的比较函数：
 <pre>
 //降序排列
@@ -28,7 +30,22 @@ function compare(v1,v2){
 对重排序后的数组来说，因为是降序排列，所以每小组中的最大值就是第一项。
 
 声明一个空数组，在循环体内把每个小数组的最大值推入，就是最后想要的返回结果啦！
+
+**解法二**
+
+对找小数组中最大值的遍历，有人提出了`sort()`的效率问题（感谢 @saymagic 的宝贵意见^^）,所以补充一下用`reduce()`做的更优解。
+
+`redece()`是ES5增加的归并数组的方法之一，它会迭代数组所有项，并构建一个最终返回的值。
+
+保持原思路不变，把解法一中关于小数组排序的模块替换为以下代码：
+<pre>
+var l = arr[i].reduce(function(prev,cur,index,array){
+      return prev > cur ? prev : cur;
+    });
+</pre>
+其中，l代表小数组中的最大值，在循环中将它推入新声明的空数组，就能得到想要的结果！
 ###解法
+**解法一**
 <pre>
 function largestOfFour(arr) {
   // You can do this!
@@ -38,6 +55,20 @@ function largestOfFour(arr) {
     	return v2 - v1;
     });
     temp.push(arr[i][0]);
+  }
+  return temp;
+}
+</pre>
+**解法二**
+<pre>
+function largestOfFour(arr) {
+  // You can do this!
+  var temp = [];
+  for(var i = 0; i < arr.length; i++){
+    var l = arr[i].reduce(function(prev,cur,index,array){
+      return prev > cur ? prev : cur;
+    });
+    temp.push(l);
   }
   return temp;
 }
