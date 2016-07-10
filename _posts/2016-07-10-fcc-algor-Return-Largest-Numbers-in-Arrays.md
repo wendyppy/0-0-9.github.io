@@ -45,7 +45,9 @@ var l = arr[i].reduce(function(prev,cur,index,array){
 </pre>
 其中，l代表小数组中的最大值，在循环中将它推入新声明的空数组，就能得到想要的结果！
 ###解法
+
 **解法一**
+
 <pre>
 function largestOfFour(arr) {
   // You can do this!
@@ -59,7 +61,9 @@ function largestOfFour(arr) {
   return temp;
 }
 </pre>
+
 **解法二**
+
 <pre>
 function largestOfFour(arr) {
   // You can do this!
