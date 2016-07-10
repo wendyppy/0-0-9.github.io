@@ -37,7 +37,7 @@ function compare(v1,v2){
 
 **解法二**
 
-对找小数组中最大值的遍历，有人提出了`sort()`的效率问题（感谢 [@saymagic](http://blog.saymagic.cn/) 的宝贵意见^^）,所以补充一下用`reduce()`做的更优解。
+对找小数组中最大值的遍历，有人提出了`sort()`的效率问题（感谢 [@saymagic](http://blog.saymagic.cn/)的宝贵意见😊），所以补充一下用`reduce()`做的更优解。
 
 `redece()`是ES5增加的归并数组的方法之一，它会迭代数组所有项，并构建一个最终返回的值。
 
