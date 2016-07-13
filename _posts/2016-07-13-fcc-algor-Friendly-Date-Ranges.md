@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Friendly Date Ranges(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Friendly Date Ranges"]
+description: "FCC算法题 Friendly Date Ranges"
 category: "FCC"
 tags: ["FCC","高级算法","algorithm","Date","String"]
 ---

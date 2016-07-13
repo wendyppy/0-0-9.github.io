@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Inventory Update(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Inventory Update"]
+description: "FCC算法题 Inventory Update"
 category: "FCC"
 tags: ["FCC","高级算法","algorithm","Array"]
 ---

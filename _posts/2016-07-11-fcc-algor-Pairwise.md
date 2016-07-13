@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Pairwise(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Pairwise"]
+description: "FCC算法题 Pairwise"
 category: "FCC"
 tags: ["FCC","高级算法","algorithm","Array"]
 ---

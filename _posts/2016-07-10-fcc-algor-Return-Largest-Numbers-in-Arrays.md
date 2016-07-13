@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Return Largest Numbers in Arrays(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Largest Numbers"]
+description: "FCC算法题 Return Largest Numbers in Arrays"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Operators"]
 ---

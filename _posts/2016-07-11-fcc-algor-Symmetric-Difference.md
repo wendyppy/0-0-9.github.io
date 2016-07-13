@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Symmetric Difference(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Symmetric Difference"]
+description: "FCC算法题 Symmetric Difference"
 category: "FCC"
 tags: ["FCC","中级算法","algorithm","Array"]
 ---

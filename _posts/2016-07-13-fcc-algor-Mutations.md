@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Mutations(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Mutations"]
+description: "FCC算法题 Mutations"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

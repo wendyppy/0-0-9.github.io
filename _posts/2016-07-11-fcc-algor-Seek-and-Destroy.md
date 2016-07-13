@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Seek and Destroy(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Seek and Destroy"]
+description: "FCC算法题 Seek and Destroy"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Array"]
 ---

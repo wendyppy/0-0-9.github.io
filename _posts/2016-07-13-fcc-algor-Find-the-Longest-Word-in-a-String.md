@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Find the Longest Word in a String(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Find the Longest Word"]
+description: "FCC算法题 Find the Longest Word in a String"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

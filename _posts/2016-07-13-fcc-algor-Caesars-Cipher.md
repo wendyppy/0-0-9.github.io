@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Caesars Cipher(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Caesars Cipher"]
+description: "FCC算法题 Caesars Cipher"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

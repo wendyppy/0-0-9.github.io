@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Diff Two Arrays(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Diff Two Arrays"]
+description: "FCC算法题 Diff Two Arrays"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Array"]
 ---

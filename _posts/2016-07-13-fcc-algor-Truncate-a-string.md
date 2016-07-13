@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Truncate a string(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Truncate a string"]
+description: "FCC算法题 Truncate a string"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Title Case a Sentence(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Title Case a Sentence"]
+description: "FCC算法题 Title Case a Sentence"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

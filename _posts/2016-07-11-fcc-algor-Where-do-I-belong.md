@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Where do I belong(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Where do I belong"]
+description: "FCC算法题 Where do I belong"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Array"]
 ---

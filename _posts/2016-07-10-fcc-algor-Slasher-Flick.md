@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Slasher Flick(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Slasher Flick"]
+description: "FCC算法题 Slasher Flick"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Array"]
 ---

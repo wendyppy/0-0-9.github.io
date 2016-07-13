@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Check for Palindromes(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Check for Palindromes"]
+description: "FCC算法题 Check for Palindromes"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

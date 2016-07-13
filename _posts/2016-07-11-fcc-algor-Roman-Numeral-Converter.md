@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Roman Numeral Converter(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Roman Numeral Converter"]
+description: "FCC算法题 Roman Numeral Converter"
 category: "FCC"
 tags: ["FCC","中级算法","algorithm","Array"]
 ---

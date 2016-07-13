@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Repeat a string repeat a string(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","repeat a string"]
+description: "FCC算法题 Repeat a string repeat a string"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","String"]
 ---

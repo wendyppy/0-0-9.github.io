@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Factorialize a Number(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Factorialize a Number"]
+description: "FCC算法题 Factorialize a Number"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Operators"]
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Chunky Monkey(算法)"
-keywords: ["FCC ","算法"]
-description: "FCC算法题"
+keywords: ["FCC ","算法","freecodecamp","Chunky Monkey"]
+description: "FCC算法题 Chunky Monkey"
 category: "FCC"
 tags: ["FCC","算法基础","algorithm","Array"]
 ---
