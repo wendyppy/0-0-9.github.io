@@ -4,7 +4,7 @@ title: "Reverse a String(算法)"
 keywords: ["FCC ","算法"]
 description: "FCC算法题"
 category: "FCC"
-tags: ["FCC","算法基础","algorithm"]
+tags: ["FCC","算法基础","algorithm","Array"]
 ---
 {% include JB/setup %}
 

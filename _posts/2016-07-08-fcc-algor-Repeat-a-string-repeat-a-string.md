@@ -4,7 +4,7 @@ title: "Repeat a string repeat a string(算法)"
 keywords: ["FCC ","算法"]
 description: "FCC算法题"
 category: "FCC"
-tags: ["FCC","算法基础","algorithm"]
+tags: ["FCC","算法基础","algorithm","String"]
 ---
 {% include JB/setup %}
 
