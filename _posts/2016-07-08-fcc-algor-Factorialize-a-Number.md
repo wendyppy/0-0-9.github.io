@@ -19,8 +19,19 @@ tags: ["FCC","算法基础","algorithm","Operators"]
 ###提示
 [Arithmetic Operators](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators)
 ###思路
+
+**解法一**
+
 输入一个数num，在函数内部进行循环操作，使num每次递减1，并与原值相乘，直至最小值递减为1.
+
+**解法二**
+
+使用递归。
+
 ###解法
+
+**解法一**
+
 <pre>
 function factorialize(num) {
   var temp = num; 
@@ -31,6 +42,19 @@ function factorialize(num) {
   return temp;
 }
 </pre>
+
+**解法二**
+
+<pre>
+function factorialize(num) {
+ if(num <= 1){
+   return 1;
+ }else{
+   return num * factorialize(num - 1);
+ }
+}
+</pre>
+
 ###测试
 <span class="txt">factorialize(5)</span> 应该返回一个数字
 
@@ -41,3 +65,7 @@ function factorialize(num) {
 <span class="txt">factorialize(20)</span> 应该返回 2432902008176640000.
 
 <span class="txt">factorialize(0)</span> 应该返回 1.
+
+###在线调试
+
+[Factorialize a Number](https://freecodecamp.cn/challenges/factorialize-a-number)
