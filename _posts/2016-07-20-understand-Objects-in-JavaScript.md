@@ -233,8 +233,115 @@ Girl.prototype = {
 	age: 18,
 	sayHello: function(){
     alert(this.name + " says Hello!");
-	};
+	}
 };
 </pre>
 
-要注意的是，这样重写后，虽然结果相同，但 constructor 属性不再指向 Girl 了。
+要注意的是，这样重写后，虽然结果相同，但 constructor 属性指向 Object，而不再是 Girl 了。之前提到过，每创建一个函数，就会自动创建它的 prototype 对象，这个 prototype 对象也会自动获得 constructor 属性。而这里的语法，本质上重写了默认的 prototype 对象，因而 constructor 属性也随之变为新对象的 constructor 属性。此时通过 constructor 已经无法确定对象的类型了。
+
+<pre>
+var girl = new Girl();
+alert(girl instanceof Girl);		//true
+alert(girl.constructor == Girl);	//false
+alert(girl.constructor == Object);	//true
+</pre>
+
+如果你需要用到 constructor 值，可以这样显示地声明它：
+
+<pre>
+function Girl(){}
+
+Girl.prototype = {
+	constructor: Girl,
+	name: "Selina",
+	age: 18,
+	sayHello: function(){
+    alert(this.name + " says Hello!");
+	}
+};
+</pre>
+
+还有很重要的一点，要先为原型添加属性和方法，再调用构造函数创建实例。这两者顺序一定不能变。来一个**错误**示范：
+
+<pre>
+function Girl(){}
+
+var girl = new Girl();
+
+Girl.prototype = {
+	constructor: Girl,
+	name: "Selina",
+	age: 18,
+	sayHello: function(){
+    alert(this.name + " says Hello!");
+	}
+};
+
+girl.sayHello();	//error
+</pre>
+
+我们知道，调用构造函数时会为实例添加一个指向原型对象的[[Prototype]]指针。调用构造函数之后再重写整个原型对象相当于把原型修改为一个新对象。而此时 Girl 中的指针指向的还是除了自动获得的 constructor 属性外一无所有的最初的原型。用 Girl 的实例去调用一个它根本没有的方法，当然会出错啦。<span class="txt">实例中的指针仅指向原型，而不指向构造函数。</span>
+
+缺点：
+
+1. 这里的构造函数没有参数。也就是说，默认情况下所有实例取得相同的属性值。
+2. 原型中所有属性被实例共享，这种共享适合于函数，包含基本值的属性也说得过去（因为你可以在实例上重写同名属性），但用在包含引用类型的属性上，就会出现问题。
+
+<pre>
+function Girl(){}
+
+Girl.prototype = {
+	constructor: Girl,
+	name: "Selina",
+	age: 18,
+	friends: ["Hebe","Ella"],
+	sayHello: function(){
+    alert(this.name + " says Hello!");
+	}
+};
+
+var girl1 = new Girl();
+var girl2 = new Girl();
+
+girl1.friends.push("Jay");
+
+alert(girl1.friends);					//"Hebe,Ella,Jay"
+alert(girl2.friends);					//"Hebe,Ella,Jay"
+alert(girl1.friends === girl2.friends);	//true
+</pre>
+
+可以看到，girl1 和 girl2 想要有不同的 friends 属性根本是做不到的。不过没关系，团结力量大，联合使用构造函数模式和原型模式，你将走上人生巅峰。
+
+##组合使用构造函数模式和原型模式
+
+构造函数模式定义实例属性，原型模式定义方法和共享的属性。
+
+这样一来，每个实例都会有自己的实例属性的 copy，同时又能共享方法的引用。另外，你也可以向构造函数传递参数了。
+
+示例代码：
+
+<pre>
+function Girl(name,age){
+	this.name = name;
+	this.age = age;
+	this.friends = ["Hebe","Ella"];
+}
+
+Girl.prototype = {
+	constructor: Girl,
+	sayHello: function(){
+    alert(this.name + " says Hello!");
+	}
+};
+
+var girl1 = new Girl("Selina",18);
+var girl2 = new Girl("Angela",22);
+
+girl1.friends.push("Jay");
+alert(girl1.friends);					//"Hebe,Ella,Jay"
+alert(girl2.friends);					//"Hebe,Ella"
+alert(girl1.friends === girl2.friends);	//false
+alert(girl1.sayHello === girl2.sayHello);//true
+</pre>
+
+构造函数中定义的实例属性可以私有，原型中定义的方法共享。完美！
