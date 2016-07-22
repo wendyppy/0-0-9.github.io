@@ -147,8 +147,6 @@ var girl2 = new Girl("Hebe",17);
 
 这个模式利用了每个函数都有的 prototype 属性。
 
-任何时候，只要创建了一个函数，该函数就会拥有 prototype 属性，该属性指向函数的原型对象。
-
 示例代码：
 
 <pre>
@@ -171,11 +169,15 @@ alert(girl1.sayname == girl2.sayname);//true
 
 可以看出，在`Girl.prototype`上创建的属性和方法，是被所有实例共享的。
 
-下图展示了示例代码中各个对象之间的关系。
+任何时候，只要创建了一个函数，该函数就会拥有 prototype 属性，该属性指向函数的原型对象。默认情况下，所有原型对象都自动获得一个 constructor 属性，该属性包含一个指向 prototype 属性所在函数的指针。恩，这句话有点绕，我们来看图说话：
 
 ![图3-1](http://cdn.saymagic.cn/o_1ao96r6uocvj2hm1tdu1uso1p6p9.png)
 
-从图中可以看出，Girl 的每个实例 girl1 、girl2 包含的内部都包含了指向Girl的原型属性`Girl.prototype`的指针，而与构造函数没有直接关系。
+上图展示了示例代码中各个对象之间的关系。我们来稍作梳理：
+
+<span class="txt">创建了自定义构造函数后，其原型对象默认只会取得 constructor 属性；其他方法皆从 Object 继承而来。</span>创建构造函数 Girl 后，Girl 的原型对象自动获得 constructor 属性。
+
+<span class="txt">当调用构造函数创建一个新实例后，该实例内部将包含一个指针，指向**构造函数的原型对象**。</span>Girl 的每个实例 girl1 、girl2 包含的内部都包含了指向Girl的原型属性`Girl.prototype`的指针，而与构造函数没有直接关系。
 
 
 
