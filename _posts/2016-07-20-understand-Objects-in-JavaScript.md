@@ -177,7 +177,7 @@ alert(girl1.sayname == girl2.sayname);//true
 
 <span class="txt">创建了自定义构造函数后，其原型对象默认只会取得 constructor 属性；其他方法皆从 Object 继承而来。</span>创建构造函数 Girl 后，Girl 的原型对象自动获得 constructor 属性。
 
-<span class="txt">当调用构造函数创建一个新实例后，该实例内部将包含一个指针，指向**构造函数的原型对象**。</span>Girl 的每个实例 girl1 、girl2 包含的内部都包含了指向Girl的原型属性`Girl.prototype`的指针，而与构造函数没有直接关系。
+<span class="txt">当调用构造函数创建一个新实例后，该实例内部将包含一个指针，指向**构造函数的原型对象**。</span>Girl 的每个实例 girl1 、girl2 都包含了指向Girl的原型属性`Girl.prototype`的指针，而与构造函数没有直接关系。
 
 
 
