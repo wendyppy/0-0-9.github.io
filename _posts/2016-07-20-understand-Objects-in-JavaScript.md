@@ -159,12 +159,12 @@ Girl.prototype.sayHello = function(){
 };
 
 var girl1 = new Girl();
-girl1.sayname();//"Selina says Hello!"
+girl1.sayHello();//"Selina says Hello!"
 
 var girl2 = new Girl();
-girl2.sayname();//"Selina says Hello!"
+girl2.sayHello();//"Selina says Hello!"
 
-alert(girl1.sayname == girl2.sayname);//true
+alert(girl1.sayHello == girl2.sayHello);//true
 </pre>
 
 可以看出，在`Girl.prototype`上创建的属性和方法，是被所有实例共享的。
@@ -179,6 +179,62 @@ alert(girl1.sayname == girl2.sayname);//true
 
 <span class="txt">当调用构造函数创建一个新实例后，该实例内部将包含一个指针，指向**构造函数的原型对象**。</span>Girl 的每个实例 girl1 、girl2 都包含了指向Girl的原型属性`Girl.prototype`的指针，而与构造函数没有直接关系。
 
+当代码要读取某个对象的某个属性时，都会执行一次搜索。先查询对象实例是否有同名属性，没有的话，再访问原型对象。举个🌰（←←栗子），当我们调用示例代码中的`girl1.sayHello()`时，解析器会问：“实例 girl1 有 sayHello 属性吗？”答曰：“无。”继续搜索，解析器又问：“girl1 的原型有 sayHello 属性吗？”答曰：“有。”于是读取保存在原型对象中的 sayHello 函数。 Girl 的其他实例想要访问 sayHello 属性时，重现的也是相同的过程。这即是多个对象实例共享原型所保存的属性和方法的基本原理。
 
+那么，当对象实例和原型对象中出现同名属性时会返回哪个呢？当然是对象实例上的属性啦，因为解析器搜索的时候先访问它，找到结果后也就不必进行二次搜素了，原型对象上的同名属性将被屏蔽。这个时候如果用 delete 删除了实例属性，原型对象上的同名属性就又可以访问啦。像酱紫：
 
+<pre>
+function Girl(){}
 
+Girl.prototype.name = "Selina";
+Girl.prototype.age = 18;
+Girl.prototype.sayHello = function(){
+    alert(this.name + " says Hello!");
+};
+
+var girl1 = new Girl();
+var girl2 = new Girl();
+
+girl1.name = "Hebe";
+alert(girl1.name);	//"Hebe"，来自实例
+alert(girl2.name);	//"Selina"，来自原型
+
+delete girl1.name;
+alert(girl1.name);	//"Selina"，来自原型
+</pre>
+
+**`hasOwnProperty()`方法可以检测属性存在与原型还是实例。该方法只有在给定属性存在于对象实例中时，才返回 true。**
+
+<pre>
+alert(girl2.hasOwnProperty("name"));  //false
+</pre>
+
+**单独使用 in 操作符可以判断通过对象是否能访问给定属性。换句话说，不管是原型还是实例，只要存在要访问的属性，就返回 true。**
+
+<pre>
+alert("name" in girl2);	//true
+</pre>
+
+结合`hasOwnProperty()`方法和 in 操作符，就能确定一个属性到底是存在于对象实例当中还是原型当中。下面这个函数在确定属性是原型中的属性时返回 true。
+
+<pre>
+function PrototypeProperty(obj,name){
+	return !obj.hasOwnProperty(name) && (name in obj);
+}
+</pre>
+
+原型模式的代码可以用对象字面量的语法重写：
+
+<pre>
+function Girl(){}
+
+Girl.prototype = {
+	name: "Selina",
+	age: 18,
+	sayHello: function(){
+    alert(this.name + " says Hello!");
+	};
+};
+</pre>
+
+要注意的是，这样重写后，虽然结果相同，但 constructor 属性不再指向 Girl 了。
