@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "理解JavaScript中的对象"
-keywords: ["JavaScript","对象","js"]
-description: "理解JavaScript中的对象、属性类型"
+title: "理解JavaScript中的对象创建模式"
+keywords: ["JavaScript","对象","js","构造函数模式","原型模式"]
+description: "深入理解JavaScript中的对象、常用的创建对象模式"
 category: "JavaScript"
-tags: ["JavaScript","对象"]
+tags: ["JavaScript","Object"]
 ---
 {% include JB/setup %}
 
