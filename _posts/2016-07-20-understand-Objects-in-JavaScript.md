@@ -147,6 +147,8 @@ var girl2 = new Girl("Hebe",17);
 
 这个模式利用了每个函数都有的 prototype 属性。
 
+任何时候，只要创建了一个函数，该函数就会拥有 prototype 属性，该属性指向函数的原型对象。
+
 示例代码：
 
 <pre>
@@ -171,7 +173,7 @@ alert(girl1.sayname == girl2.sayname);//true
 
 下图展示了示例代码中各个对象之间的关系。
 
-![图3-1](http://cdn.saymagic.cn/o_1ao95qrbj1lhn14t5gkk1fqn1hb19.png)
+![图3-1](http://cdn.saymagic.cn/o_1ao96r6uocvj2hm1tdu1uso1p6p9.png)
 
 从图中可以看出，Girl 的每个实例 girl1 、girl2 包含的内部都包含了指向Girl的原型属性`Girl.prototype`的指针，而与构造函数没有直接关系。
 
