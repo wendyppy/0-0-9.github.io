@@ -47,7 +47,7 @@ tags: ["FCC","中级算法","algorithm","Object"]
 
 在二重循环（filter 底层也是由循环实现的）的内部，做出如下判断：
 
-	if(!item.hasOwnProperty(keys[i]) || item[keys[i]] != source[keys[i]]){
+	if(!item.hasOwnProperty(keys[i]) || item[keys[i]] !== source[keys[i]]){
         return false;
       }   
 
@@ -56,7 +56,17 @@ tags: ["FCC","中级算法","algorithm","Object"]
 
 易知 
 	`collection = [{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }]`，
-	`source = { "a": 1, "b": 2 }`。
+	`source = { "a": 1, "b": 2 }`，`keys = ["a","b"]`。
+
+<code class="txt">obj.hasOwnProperty(prop)</code>在属性 prop 存在于对象实例时返回 true。
+
+解释这个if判断语句：当 collection 的某一项（本例中可以是`{ "a": 1, "b": 2 }`、`{ "a": 1 }`或`{ "a": 1, "b": 2, "c": 2 }`）不存在属性 keys[i]（本例中可能是a 或 b）时，返回 false；item 在 key 值为 keys[i] 时 value 值不等于同 key 值时 source 的 value值，返回 false。
+
+其余情况，在循环外部返回 true。P.S. 像这里 keys 可能包含多个项，这种情况下用排除法删除不符合要求的项比返回符合要求的项要简单许多。
+
+**解法二**
+
+用 `every()` 代替循环。这种方法虽然写起来简单得多，但效率上是比不上原始的 for 循环的。可以用谷歌的 `console.time()` 自己测一下函数的运行时间。
 
 ###解法
 
@@ -67,15 +77,30 @@ function where(collection, source) {
   var arr = [];
   // What's in a name?
   var keys = Object.keys(source);
-  //console.log(keys);
   arr = collection.filter(function(item){
     for(var i = 0; i < keys.length; i++){
-      if(!item.hasOwnProperty(keys[i]) || item[keys[i]] != source[keys[i]]){
+      if(!item.hasOwnProperty(keys[i]) || item[keys[i]] !== source[keys[i]]){
         return false;
       }    
     }   
     return true;
   });
+  return arr;
+}
+</pre>
+
+**解法二**
+
+<pre>
+function where(collection, source) {
+  var arr = [];
+  // What's in a name?
+  var keys = Object.keys(source);
+  arr = collection.filter(function(item) {
+    return keys.every(function(key) {
+      return item.hasOwnProperty(key) && item[key] === source[key];
+    });
+  }); 
   return arr;
 }
 </pre>
