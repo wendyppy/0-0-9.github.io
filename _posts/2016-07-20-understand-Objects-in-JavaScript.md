@@ -94,7 +94,7 @@ var girl2 = new Girl("Hebe",17);
 
 1. 创建一个新对象：<code>var girl1 = {};</code>
 
-2. 将构造函数的作用域赋给新对象。也就是说，`Person()`中的`this`将指向新对象`girl1`。
+2. 将构造函数的作用域赋给新对象。也就是说，`Girl()`中的`this`将指向新对象`girl1`。
 
 3. 执行构造函数中的代码。为`girl1`添加`name`、`age`属性和`sayHello()`方法。
 
@@ -232,7 +232,7 @@ Girl.prototype = {
 	name: "Selina",
 	age: 18,
 	sayHello: function(){
-    alert(this.name + " says Hello!");
+   	 alert(this.name + " says Hello!");
 	}
 };
 </pre>
@@ -256,7 +256,7 @@ Girl.prototype = {
 	name: "Selina",
 	age: 18,
 	sayHello: function(){
-    alert(this.name + " says Hello!");
+   	 alert(this.name + " says Hello!");
 	}
 };
 </pre>
@@ -273,7 +273,7 @@ Girl.prototype = {
 	name: "Selina",
 	age: 18,
 	sayHello: function(){
-    alert(this.name + " says Hello!");
+   	 alert(this.name + " says Hello!");
 	}
 };
 
@@ -296,7 +296,7 @@ Girl.prototype = {
 	age: 18,
 	friends: ["Hebe","Ella"],
 	sayHello: function(){
-    alert(this.name + " says Hello!");
+   	 alert(this.name + " says Hello!");
 	}
 };
 
@@ -330,7 +330,7 @@ function Girl(name,age){
 Girl.prototype = {
 	constructor: Girl,
 	sayHello: function(){
-    alert(this.name + " says Hello!");
+   	 alert(this.name + " says Hello!");
 	}
 };
 
