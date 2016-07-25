@@ -50,3 +50,23 @@ ES5开始，可以使用任何形式的类数组对象，只要它有 length 属
 
 ####应用场景
 
+**两数求和**
+
+<pre>
+function sum(num1,num2){
+	return num1 + num2;
+}
+function callSum1(num1,num2){
+	//传入 arguments 对象
+	return sum.apply(this,arguments);
+}
+function callSum2(num1,num2){
+	//传入数组
+	return sum.apply(this,[num1,num2]);
+}
+alert(callSum1(5,6)); //11
+alert(callSum2(5,6)); //11
+</pre>
+
+可见，`apply()`方法的第二个参数用 arguments 或参数数组都能返回相同值。
+
