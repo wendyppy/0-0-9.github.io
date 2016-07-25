@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "JavaScript中的apply,call,bind‘/"
+title: "JavaScript中的apply,call,bind"
 keywords: ["JavaScript","bind","js","apply","call"]
 description: "JavaScript中apply()、call()和bind()的用法"
 category: "JavaScript"
