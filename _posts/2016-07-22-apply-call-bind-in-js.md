@@ -70,3 +70,28 @@ alert(callSum2(5,6)); //11
 
 可见，`apply()`方法的第二个参数用 arguments 或参数数组都能返回相同值。
 
+**找到数组中的最大/最小值**
+
+<pre>
+var arr = [1,2,3,4,5];
+var max = Math.max.apply(Math,arr);
+var min = Math.min.apply(max,arr);
+alert(max);	//5
+alert(min);	//1
+</pre>
+
+测试了一下，这里`apply()`方法的第一个参数，可填 `Math`、`window`、`this`、`null`、`undefined`中的任意一种，甚至 Math 的内置的 `max`、`min`也都可以正确运行。在函数内部加了`"use strict";`设置了严格模式也是如此。
+
+还有，这样使用 `apply()` 的时候还要注意参数个数越界的问题，当然了，我指的是你传入的参数非常多的情况下。因为有些引擎会限制传入到方法的参数个数。
+
+**两数组合并**
+
+<pre>
+var arr1 = [1,2,3];
+var arr2 = ["Selina","Hebe","Ella"];
+Array.prototype.push.apply(arr1,arr2);
+alert(arr1);	//"1,2,3,Selina,Hebe,Ella"
+alert(arr2);	//"Selina,Hebe,Ella"
+</pre>
+
+这里相当于调用 arr1 原型中的 push() 方法推入 arr2 值。
