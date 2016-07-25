@@ -157,3 +157,17 @@ showGirl.call(o);		//"Hebe"
 而运行`showGirl.call(o)`时，函数体内 this 指向 o ，于是结果为`Hebe`。
 
 用`call()`或`apply()`这样扩充作用域，对象不需要与方法有任何耦合关系。
+
+**示例3**
+
+<pre>
+var girl = {
+    name: "Selina",
+    sayHello: function(obj){
+        alert(this.name + " says Hello " + obj)
+    }
+};
+girl.sayHello.call(girl,"Everybody");
+</pre>
+
+可以看出，`call()`将 this 值绑定给函数后函数是立即执行的。写这个是为了和后面的`bind()`对比。
