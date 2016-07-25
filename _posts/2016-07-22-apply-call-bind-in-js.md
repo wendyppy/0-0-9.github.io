@@ -80,7 +80,7 @@ alert(max);	//5
 alert(min);	//1
 </pre>
 
-测试了一下，这里`apply()`方法的第一个参数，可填`Math`、`window`、`this`、`null`、`undefined`中的任意一种，甚至 Math 的内置的 `max`、`min`也都可以正确运行。在函数内部加了`"use strict";`设置了严格模式也是如此。
+这里`apply()`方法的第一个参数，可填`Math`、`window`、`this`、`null`、`undefined`中的任意一种，甚至之前声明的 `max`、`min`，或者`new Object()`等等，只要输入合法，都可以正确运行。因为 apply 的这个操作用不到 this 值，所以随你玩。在函数内部加了`"use strict";`设置了严格模式也是如此。
 
 还有，这样使用 `apply()` 的时候还要注意参数个数越界的问题，当然了，我指的是你传入的参数非常多的情况下。因为有些引擎会限制传入到方法的参数个数。
 
@@ -94,4 +94,33 @@ alert(arr1);	//"1,2,3,Selina,Hebe,Ella"
 alert(arr2);	//"Selina,Hebe,Ella"
 </pre>
 
-这里相当于调用 arr1 原型中的 push() 方法推入 arr2 值。
+这里相当于调用 arr1 的 push() 方法推入 arr2 值。
+
+##call
+
+`call()`方法与`apply()`方法作用相同，区别仅在于接收参数的方式。第一个参数 this 值和 `apply()`相同，变化的是剩余的所有参数都直接传给函数。也就是说，使用`call()`方法时，传给函数的参数必须逐个列举出来。
+
+###语法
+
+	fun.call(thisArg[,arg1[,arg2[,...]]])
+
+###参数
+
+**thisArg**
+
+fun函数运行时的 this 值。
+
+非严格模式下，设定为 null 或 undefined 时会指向全局对象（浏览器中是 window 对象）。值为原始值（数字、字符串、布尔值）的 this 会指向该原始值的自动包装对象（Number、String、Boolean）。
+
+**arg1,arg2,...**
+
+指定的参数列表。
+
+###描述
+
+通过`call()`，可以<span class="txt">在一个对象上借用另一个对象的方法。</span>
+
+如：`Object.prototype.toString.call([])`，是一个 Array 对象借用了 Object 对象上的方法。
+
+###应用场景
+
