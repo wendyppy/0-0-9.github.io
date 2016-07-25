@@ -14,7 +14,7 @@ tags: ["JavaScript","Function"]
 
 在一个对象的上下文中应用另一个对象的方法。参数以数组或类数组形式传入。
 
-<span class="txt">`apply()`方法在指定 this 值和参数的情况下调用某个函数。</span>
+`apply()`方法在<span class="txt">指定 this 值和参数的情况下调用某个函数。</span>
 
 在特定的作用域中调用函数，实际等于设置函数体内的 this 值。
 
@@ -124,3 +124,36 @@ fun函数运行时的 this 值。
 
 ###应用场景
 
+**两数求和**
+
+<pre>
+function sum(num1,num2){
+  return num1 + num2;
+}
+function callSum(num1,num2){
+  return sum.call(this,num1,num2);
+}
+alert(callSum(3,4));	//7
+</pre>
+
+**扩充函数运行的作用域**
+
+<pre>
+window.girl = "Selina";
+var o = {girl: "Hebe"};
+
+function showGirl(){
+    alert(this.girl);
+}
+
+showGirl();				//"Selina"
+showGirl.call(this);	//"Selina"
+showGirl.call(window);	//"Selina"
+showGirl.call(o);		//"Hebe"
+</pre>
+
+本例中，`showGirl()`是作为全局函数定义的，在全局作用域中调用时，函数体中的`this.girl`会转化成`window.girl`，其值为`Selina`。
+`showGirl.call(this)`，`showGirl.call(window)`是两种显式地在全局作用域中调用函数的方式。
+而运行`showGirl.call(o)`时，函数体内 this 指向 o ，于是结果为`Hebe`。
+
+用`call()`或`apply()`这样扩充作用域，对象不需要与方法有任何耦合关系。
