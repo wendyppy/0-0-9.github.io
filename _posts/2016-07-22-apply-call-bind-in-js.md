@@ -218,3 +218,4 @@ alert(thisGirl());			//"Selina"
 alert(boundThisGirl());		//"Hebe"
 </pre>
 
+将 star 的 `myGirl()` 方法在函数外调用，因为 this 的指向变了，所以有时会出现问题（对象丢失）。 如 `thisGirl()`调用时就结果就变成了全局作用域下的`Selina`。这时候创建一个绑定函数则能避免此类问题的发生。
