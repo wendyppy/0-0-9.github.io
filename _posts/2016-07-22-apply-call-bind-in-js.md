@@ -199,3 +199,22 @@ girl.sayHello.call(girl,"Everybody");
 新函数（绑定函数）与被调函数（目标函数）具有相同的函数体。目标函数被调用时 this 值绑定到`bind()`的第一个参数，该参数不能被重写。绑定函数被调用时，`bind()`也接受预设的参数提供给原函数。一个绑定函数也能使用 new 创建对象：这种行为就像把原函数当成构造器，忽略提供的 this 值，同时模拟函数接收调用时的参数。
 
 ###应用场景
+
+**创建绑定函数**
+
+<pre>
+this.girl = "Selina";
+var star = {
+  girl: "Hebe",
+  myGirl: function(){
+    return this.girl;
+  }
+};
+var thisGirl = star.myGirl;
+var boundThisGirl = thisGirl.bind(star);
+
+alert(star.myGirl());		//"Hebe"
+alert(thisGirl());			//"Selina"
+alert(boundThisGirl());		//"Hebe"
+</pre>
+
