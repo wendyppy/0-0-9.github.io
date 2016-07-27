@@ -219,3 +219,64 @@ alert(boundThisGirl());		//"Hebe"
 </pre>
 
 将 star 的 `myGirl()` 方法在函数外调用，因为 this 的指向变了，所以有时会出现问题（对象丢失）。 如 `thisGirl()`调用时就结果就变成了全局作用域下的`Selina`。这时候创建一个绑定函数则能避免此类问题的发生。
+
+**为函数预设初始参数**
+
+<pre>
+function list(){
+  return Array.prototype.slice.call(arguments);
+}
+
+var list1 = list(1,2,3);
+
+var presetList = list.bind(undefined,"Selina");
+var list2 = presetList();
+var list3 = presetList(4,5,6);
+
+alert(list1);		//"1,2,3"
+alert(list2);		//"Selina"
+alert(list3);		//"Selina,4,5,6"
+</pre>
+
+`Array.prototype.slice.call(arguments)`相当于 arguments 借用了数组的`slice()`方法，所以也可以写成`[].slice.call(arguments)`，或者直接用`bind()`方法将`list()`函数重写成这样：
+
+<pre>
+var unboundSlice = Array.prototype.slice;
+var slice = Function.prototype.call.bind(unboundSlice);
+function list(){
+	return slice(arguments);
+}
+</pre>
+
+可以看出，本例中的`list()`方法是把一个类数组对象转换为数组，list1 的结果其实是`[1,2,3]`，因为在弹出框中显示所以没有数组边界符。后面的 list2、list3 同理。
+
+**示例3**
+
+写这个是为了与 call 中的示例3对比。来看看`call()`中的代码用`bind()`写会是什么样子。
+
+<pre>
+var girl = {
+    name: "Selina",
+    sayHello: function(obj){
+        alert(this.name + " says Hello " + obj)
+    }
+};
+//girl.sayHello.call(girl,"Everybody");
+var boundHello = girl.sayHello.bind(girl);
+boundHello("Everybody");
+</pre>
+
+被注释掉的内容是用`call()`实现相同效果应用的代码。
+
+或者最后两行可以写成这样：
+
+<pre>
+var boundHello = girl.sayHello.bind(girl,"Everybody");
+boundHello();
+</pre>
+
+这里就能看出`call()`和`bind()`的区别来了：`call()`绑定 this 后立即自动调用，`bind()`绑定 this 后需要单独调用。
+
+##测试
+
+看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/apply-call-bind/)。
