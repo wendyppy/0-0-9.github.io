@@ -16,5 +16,5 @@ tags: ["JavaScript"]
 
 分享一个神图：
 
-<p class="text-center">![](http://cdn.saymagic.cn/o_1aom2dgfs16b73c3tpa1ie06s89.jpg)</p>
+<center>![](http://cdn.saymagic.cn/o_1aom2dgfs16b73c3tpa1ie06s89.jpg)</center>
 
