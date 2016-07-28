@@ -40,12 +40,14 @@ JavaScript 中的任意对象都有一个指针（内部属性），指向创建
 
 1. 实例 f1、f2
 
-	f1、f2 是 Foo() 方法的实例，它们的内部属性`[[Prototype]]`指向构造函数的原型对象，也就是Foo() 方法的原型 Foo.prototype。
-
+	f1、f2 是 Foo() 方法的实例，它们的内部属性`[[Prototype]]`指向构造函数的原型对象，也就是Foo() 方法的原型 Foo.prototype。<br />
 
 2. 方法 Foo()
 
 	构造函数 Foo() 的显式属性 prototype 指向了原型对象 Foo.prototype，在原型对象中定义的属性和方法可以被所有实例共享。
+	
+	 Foo() 也是对象。它也有 `[[Prototype]]`，指向其构造函数的原型对象。Foo() 的构造函数是 Function，所以它的 `[[Prototype]]` 指向 Function.prototype。
 
 3. 原型对象 Foo.prototype
 
+原型对象 Foo.prototype 的 constructor 属性指向构造函数 Foo()。
