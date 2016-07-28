@@ -94,3 +94,19 @@ alert(parent.getSuperDesc());	//"superProp"
 </pre>
 
 呵呵，在子类中重写的方法白写了，因为子类被重写了呀。所以，<span class="txt">给原型添加方法的代码一定要放在替换原型的语句之后，</span>否则就会出现上面的错误。
+
+同样的道理，<span class="txt">在通过原型链实现继承时，不能使用对象字面量创建原型方法，</span>因为这样会重写原型链，导致原型链被切断。
+
+<pre>
+//SubFn继承了SuperFn
+SubFn.prototype = new SuperFn();
+
+//使用对象字面量添加新方法，会导致上一行代码失效
+SubFn.prototype = {
+	getSuperDesc: function(){
+    return "Selina";
+	}
+};
+</pre>
+
+因为`SubFn.prototype = {...}`相当于`SubFn.prototype = new Object(...)`，SubFn.prototype 变成了 Object 的实例，而不是我们预期的 SuperFn 的实例，原型链被中断，后续操作当然会跟着出错啦。
