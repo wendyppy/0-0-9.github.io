@@ -89,5 +89,8 @@ alert(parent.getSuperDesc());	//"superProp"
 哦，做个小测试，把上面代码中的先后顺序做个微调，变成 ②→③→①，结果又会如何呢？
 
 <pre>
-
+alert(child.getSuperDesc());	//"superProp"
+alert(parent.getSuperDesc());	//"superProp"
 </pre>
+
+呵呵，在子类中重写的方法白写了，因为子类被重写了呀。所以，<span class="txt">给原型添加方法的代码一定要放在替换原型的语句之后，</span>否则就会出现上面的错误。
