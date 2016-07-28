@@ -38,16 +38,56 @@ JavaScript 中的任意对象都有一个指针（内部属性），指向创建
 
 观察上面的例图，可以发现图中实体大致可以从左至右分成三类：实例、方法、方法的原型对象。我们现在来一一分析。
 
-1. 实例 f1、f2<br/><br/>
+**1. 实例 f1、f2**<br/><br/>
 f1、f2 是 Foo() 方法的实例，它们的内部属性`[[Prototype]]`指向构造函数的原型对象，也就是Foo() 方法的原型 Foo.prototype。<br /><br/>
 
-2. 方法 Foo()<br/><br/>
+**2. 方法 Foo()**<br/><br/>
 构造函数 Foo() 的显式属性 prototype 指向了原型对象 Foo.prototype，在原型对象中定义的属性和方法可以被所有实例共享。<br/><br/>
-Foo() 也是对象。它也有 `[[Prototype]]`，指向其构造函数的原型对象。既然是构造函数，那就是 Function 的实例，所以 Foo() 的 `[[Prototype]]` 指向 Function.prototype。<br/><br/>
-而 Function、Array 这类的内建对象的 `[[Prototype]]` 都指向 Object.prototype。
+Foo() 也是对象。它也有 `[[Prototype]]`，指向其构造函数的原型对象。既然是构造函数，那就是 Function 的实例，所以 Foo() 的`[[Prototype]]` 指向 Function.prototype。<br/><br/>
+而 Function、Array 这类的内建对象的`[[Prototype]]` 都指向 Object.prototype。
 <br/><br/>
 
-3. 原型对象 Foo.prototype<br/><br/>
+**3. 原型对象 Foo.prototype**<br/><br/>
 原型对象 Foo.prototype 的 constructor 属性指向构造函数 Foo()。<br/><br/>
-Foo.prototype 也是对象。它也有 `[[Prototype]]`，指向它的构造函数的原型对象 Object.prototype。
-最后，Object.prototype 的 `[[Prototype]]` 指向 null。
+Foo.prototype 也是对象。它也有`[[Prototype]]`，指向它的构造函数的原型对象 Object.prototype。
+最后，Object.prototype 的`[[Prototype]]` 指向 null。
+
+###基于原型链的继承
+
+注：后续代码中，用 super 表示超类，即父类；sub 表示子类。
+
+<pre>
+function SuperFn(){
+    this.desc1 = "superProp";
+}
+SuperFn.prototype.getSuperDesc = function(){
+    return this.desc1;
+};
+function SubFn(){
+    this.desc2 = "subProp";
+}
+//SubFn继承了SuperFn ①
+SubFn.prototype = new SuperFn();
+//添加新方法 ②
+SubFn.prototype.getSubDesc = function(){
+    return this.desc2;
+};
+//重写超类中方法 ③
+SubFn.prototype.getSuperDesc = function(){
+    return "Selina";
+};
+
+var child = new SubFn();
+var parent = new SuperFn();
+
+alert(child.getSuperDesc());	//"Selina"
+alert(parent.getSuperDesc());	//"superProp"
+</pre>
+
+来捋顺一下代码：我们有一个超类、一个子类，超类中有方法`getSuperDesc()`。然后子类 SubFn 继承了超类 SuperFn（见①），继承是通过重写原型对象的方式实现的。此时继承了超类的子类就拥有了超类的所有属性和方法。再给子类添加新方法（见②）、重写超类中的方法（见③）。访问子类实例中的方法`getSuperDesc()`，弹出重写后的结果，超类中的同名方法被屏蔽；访问超类实例中的方法`getSuperDesc()`，保持原来不变。
+
+哦，做个小测试，把上面代码中的先后顺序做个微调，变成 ②→③→①，结果又会如何呢？
+
+<pre>
+
+</pre>
