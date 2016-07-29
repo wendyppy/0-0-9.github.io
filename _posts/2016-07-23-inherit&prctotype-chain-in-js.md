@@ -110,3 +110,90 @@ SubFn.prototype = {
 </pre>
 
 因为`SubFn.prototype = {...}`相当于`SubFn.prototype = new Object(...)`，SubFn.prototype 变成了 Object 的实例，而不是我们预期的 SuperFn 的实例，原型链被中断，后续操作当然会跟着出错啦。
+
+###原型链的问题
+
+只使用原型链来实现继承，就像只使用原型模式来创建对象一样，都会踩引用类型值和不能给（超类型的）构造函数传参的坑。当超类中有一个数组，子类继承超类后，子类的所有实例都会因为其中一个实例对数组的操作而共享这个新数组。太可怕了！还能不能有自己的私人数组了！于是实践中很少单独使用原型链。
+
+##借用构造函数
+
+这种技术主要是为了解决前面提到的引用类型的问题，基本思想就是在子类型构造函数的内部调用超类型构造函数。
+
+<pre>
+function SuperFn(){
+    this.girls = ["Selina","Hebe","Ella"];
+}
+function SubFn(){
+    //继承了SuperFn
+    SuperFn.call(this);
+}
+
+var child1 = new SubFn();
+child1.girls.push("Jay");
+var child2 = new SubFn();
+
+alert(child1.girls);	//"Selina,Hebe,Ella,Jay"
+alert(child2.girls);	//"Selina,Hebe,Ella"
+</pre>
+
+函数是在特定环境中执行代码的对象，因此用`apply()`和`call()`就可以在（将来）新创建的对象上执行构造函数。
+
+借用构造函数带来的另一个好处就是可以在子类中向超类的构造函数传递参数。像这样： ↓↓ 
+
+<pre>
+function SuperFn(name){
+    this.name = name;
+}
+function SubFn(){
+    SuperFn.call(this,"Selina");
+    this.age = 18;
+}
+
+var child = new SubFn();
+alert(child.name);	//"Selina"
+alert(child.age);	//18
+</pre>
+
+###借用构造函数的问题
+
+如果仅仅使用借用构造函数，那么就会出现构造函数模式的缺陷：方法都定义在函数中，函数复用成为空谈；子类型不可见超类型原型中定义的方法。因此，借用构造函数也很少被单独使用。
+
+##组合继承
+
+结合原型链和借用构造函数的技术，使用原型链实现对原型属性和方法的继承，通过借用构造函数的技术实现对实例属性的继承。
+
+<pre>
+function SuperFn(name){
+    this.name = name;
+    this.cds = ["super star","shero"];
+}
+SuperFn.prototype.sayName = function(){
+    alert(this.name);
+};
+function SubFn(name,age){
+    SuperFn.call(this,name);
+    this.age = age;
+}
+
+SubFn.prototype = new SuperFn();
+SubFn.prototype.sayAge = function(){
+    alert(this.age);
+};
+
+SubFn.prototype.constructor = SubFn;
+var child1 = new SubFn("Selina",18);
+child1.cds.push("forever");
+var child2 = new SubFn("Hebe",17);
+
+alert(child1.name);	//"Selina"
+alert(child1.cds);	//"super star, shero, forever"
+child1.sayName();	//"Selina"
+child1.sayAge();	//18
+
+alert(child2.name);	//"Hebe"
+alert(child2.cds);	//"super star, shero"
+child2.sayName();	//"Hebe"
+child2.sayAge();	//17
+</pre>
+
+各种结果，尽如人意。这种模式扬长避短，成为 JavaScript 中最常用的继承模式。
