@@ -197,3 +197,7 @@ child2.sayAge();	//17
 </pre>
 
 各种结果，尽如人意。这种模式扬长避短，成为 JavaScript 中最常用的继承模式。
+
+##测试
+
+看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/inherit/)。

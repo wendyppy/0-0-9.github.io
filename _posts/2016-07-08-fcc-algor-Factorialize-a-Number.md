@@ -26,7 +26,11 @@ tags: ["FCC","算法基础","algorithm","Operators"]
 
 **解法二**
 
-使用递归。
+使用经典递归。
+
+**解法三**
+
+使用命名函数表达式。
 
 ###解法
 
@@ -53,6 +57,18 @@ function factorialize(num) {
    return num * factorialize(num - 1);
  }
 }
+</pre>
+
+**解法三**
+
+<pre>
+var factorialize = (function fn(num){
+	if(num <= 1){
+   		return 1;
+	}else{
+  		return num * fn(num - 1);
+ 	}
+});
 </pre>
 
 ###测试
