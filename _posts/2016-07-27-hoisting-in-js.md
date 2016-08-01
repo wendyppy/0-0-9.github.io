@@ -42,4 +42,34 @@ alert(girl2);	//error
 
 ![](http://cdn.saymagic.cn/o_1ap1bv7vgmni1opo1rhc1cs7178t9.png)
 
+图中不同色块分别代表不同的执行环境，内部环境可以通过作用域链访问所有外部环境，但外部不能访问内部的变量和函数。例如，`swapGirl()`作用域链包含`swapGirl()`变量对象、`showGirl()`变量对象、全局变量对象这3个对象；`showGirl()`的作用域链包含它自己的变量对象和全局变量对象这2个对象，它不能访问内部函数`swapGirl()`的执行环境。
+
+##函数级作用域
+
+ES6之前，JavaScript 没有块级作用域。一个独立的执行环境不是由封闭的花括号而是函数来分界的。
+
+<pre>
+if(true){
+    var girl = "Selina";
+}
+alert(girl);	//"Selina"
+</pre>
+
+这段代码中，执行`alert(girl);`没有返回`Uncaught ReferenceError: girl is not defined`这样的异常，而是弹出 if 语句中定义的"Selina"，这是为什么呢？
+
+if 语句是一个由花括号封闭起来的“块”，在 Java、C 等语言中，块中定义的局部变量会在 if 语句执行完毕后被销毁，而在 JavaScript 中，if 语句中的变量声明会将变量添加到当前的执行环境。
+
+for 语句同理。
+
+<pre>
+for(var i = 1; i < 10; i++){
+    //do something...
+}
+alert(i);	//10
+</pre>
+
+如果你想像在 Java 中那样使用块级作用域，你可以用 ES6 新增的 let 声明块级作用域的变量，const 声明常量。不过这不是我们今天主要讨论的范围，暂不多做介绍。
+
+##var的变量提升
+
 
