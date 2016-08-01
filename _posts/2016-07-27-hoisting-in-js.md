@@ -115,7 +115,27 @@ alert(girl2);	//error
 3. 函数声明（不包括函数表达式） - <span class="txt">函数名+对应值（函数对象）</span>构成，覆盖同名变量属性
 
 <pre>
+function foo(a,b){
+	alert(a);	//"Selina"
+	alert(b);	//undefined
+	alert(c);	//undefined
+	alert(d);	//function d(){}
+	alert(e);	//undefined
+	alert(f);	//error
+	var c = "this is c";
+	function d(){}
+	var e = function(){};
+	(function f(){});
+}
+foo("Selina");
+</pre>
 
+注释内容为调用`foo()`函数后执行结果。当进入带有参数"Selina"的函数`foo()`、代码尚未执行时，活动对象表现如下：
+
+<pre>
+活动对象(foo) = {
+
+};
 </pre>
 
 ##函数级作用域
