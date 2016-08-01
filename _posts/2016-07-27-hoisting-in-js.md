@@ -134,9 +134,43 @@ foo("Selina");
 
 <pre>
 活动对象(foo) = {
-
+	a: "Selina",
+	b: undefined,
+	c: undefined,
+	d: function d(){},
+	e: function d(){}
 };
 </pre>
+
+`f()`不是活动对象，因为它不是一个函数声明而是一个函数表达式。
+
+**② 执行代码**
+
+这是处理代码的第二个阶段。这阶段开始前，活动对象已经有了属性，但它们大部分的值都还是默认的 undefined。在一阶段中，前面进入环境时的示例代码演变如下：
+
+<pre>
+活动对象(foo) = {
+	a: "Selina",
+	b: undefined,
+	c: "this is c",
+	d: function d(){},
+	e: 指向定义的匿名函数表达式function(){}
+};
+</pre>
+
+看懂了这些，其实就能解释一些我们以前见到的某些”诡异“的场景：
+
+<pre>
+if(true){
+	var a = "Selina";
+}else{
+	var b = "Hebe";
+}
+alert(a);	//"Selina"
+alert(b);	//undefined
+</pre>
+
+这里 b 的值为 undefined 而不是抛出`Uncaught ReferenceError`的异常，因为虽然 else 部分永远不会被执行，但变量 b 在进入环境阶段就已经被放在变量对象当中了。知道这一点对理解 JavaScript 的变量提升有很大帮助。
 
 ##函数级作用域
 
