@@ -88,7 +88,7 @@ foo: <FunctionObject> = {
 }
 </pre>
 
-需要注意的是，同一个执行环境中，`[[scope]]`属性是被所有闭包共享的。也就是说，当其中一个闭包对`[[scope]]`的某变量作出修改，会影响到其它闭包对该变量的读取。
+需要注意的是，同一个执行环境中，`[[scope]]`属性是被所有闭包共享的。也就是说，当其中一个闭包对`[[scope]]`的某变量作出修改，会影响到其它闭包对该变量的读取。如下例：
 
 <pre>
 var firstClosure,secondClosure;
@@ -108,3 +108,23 @@ alert(firstClosure());	//"firstClosure: 22"
 alert(secondClosure());	//"secondClosure: 21"
 </pre>
 
+因为闭包保存的是整个变量对象，而不是某个特殊的变量，由于作用域链的配置机制，它会带来一个副作用，即闭包只能取得包含函数中任何变量的最后一个值。如下例：
+
+<pre>
+function foo(k,max){
+    var result = new Array();
+    for (var i = 0; i < max; i++){
+        result[i] = function(){
+            alert(i);
+        };
+    }
+    return result[k]();
+}
+foo(1,5);	//5
+foo(2,5);	//5
+foo(4,5);	//5
+</pre>
+
+表面上看，函数似乎会返回自己的索引值即 k 值（循环中为i），其实则不然，每个函数都返回了传入的 max 值。因为每个函数的作用域链中都保存着`foo()`函数的活动对象，所以它们引用的都是同一个变量 i。当`foo()`返回后，i 的值为 max。
+
+由于闭包会携带包含它的函数作用域，因此会比其它函数占用更多内存。在实际生产环境中，应避免闭包的滥用。
