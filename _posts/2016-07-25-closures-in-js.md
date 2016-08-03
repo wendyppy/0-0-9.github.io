@@ -150,4 +150,47 @@ foo(4,5);	//4
 
 这样重写后，我们没有把闭包直接赋值给数组，而是定义了一个匿名函数，将立即执行这个匿名函数的结果赋给数组。在调用每个匿名函数时，传入变量 i，因为函数参数是按值传递的，所以会把 i 的当前值复制给 num。
 
+JavaScript 中，闭包的返回语句会将控制流返回给调用者。
+
 由于闭包会携带包含它的函数作用域，因此会比其它函数占用更多内存。在实际生产环境中，应避免闭包的滥用。
+
+###关于 this 对象
+
+闭包中使用 this 对象可能发生一些问题。我们知道，this 是函数运行时基于函数的执行环境绑定的：全局函数中，this === window；当函数被作为某个对象的方法调用时， this 等于那个对象。不过，匿名函数的执行具有全局性，因此 this 通常指向 window。
+
+观察下面两个 🌰：
+
+<pre>
+name = "this is window";
+var obj = {
+    name: "this is obj",
+    getName: function(){
+        return function(){
+            return this.name;
+        }
+    }
+};
+alert(obj.getName()());	//"this is window"
+</pre>
+
+<pre>
+name = "this is window";
+var obj = {
+    name: "this is obj",
+    getName: function(){
+        var _this = this;
+        return function(){
+            return _this.name;
+        }
+    }
+};
+alert(obj.getName()());	//"this is obj"
+</pre>
+
+第一段代码的`getName()`返回一个匿名函数，其 this 指向 window。为什么匿名函数没有取得其外部作用域的 this 对象呢？
+
+每个函数在被调用时会自动取得两个特殊对象：this 和 arguments。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不会访问到外部函数的这两个变量。
+
+##测试
+
+看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/closures/)。
