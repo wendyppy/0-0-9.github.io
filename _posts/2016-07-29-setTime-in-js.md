@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "JavaScript中的定时器"
-keywords: ["JavaScript","setTimeout","js","setTimeInterval"]
+keywords: ["JavaScript","setTimeout","js","setTimeInterval","window"]
 description: "详细解读JavaScript中的定时器用法：setTimeout()、setTimeInterval()"
 category: "JavaScript"
-tags: ["JavaScript"]
+tags: ["JavaScript","BOM"]
 ---
 {% include JB/setup %}
 
