@@ -27,7 +27,9 @@ DOM（文档对象模型）是针对 HTML 和 XML 文档的一个 API。描绘�
 
 ![](http://cdn.saymagic.cn/o_1apsfda5311ce4v8jkt1c081ohv9.jpg)
 
-JavaScript 所有节点类型都继承自 Node 类型，所有节点类型都共享相同的基本属性和方法。
+JavaScript 所有节点类型都继承自 Node 类型，该类型在除 IE 外的所有浏览器都可以访问到，所有节点类型都共享相同的基本属性和方法。
+
+###节点的属性
 
 节点的 nodeType 属性用于表明节点类型，对应12个数值常量。↓↓↓序号即为对应数值常量。
 
@@ -43,3 +45,39 @@ JavaScript 所有节点类型都继承自 Node 类型，所有节点类型都共
 10. `Node.DOCUMENT_TYPE_NODE`
 11. `Node.DOCUMENT_FRAGMENT_NODE`
 12. `Node.NOTATION_NODE`
+
+查看`<body>`节点是否是一个元素：
+
+<pre>
+//IE下无效
+var body = document.body;
+if(body.nodeType == Node.ELEMENT_NODE){
+    alert("Element!");
+}
+</pre>
+
+因为 IE 没有公开 Node 类型的构造函数，上面的代码在 IE 中不能正常运行。我们可以用节点类型对应的数值常量来重写，使其跨浏览器兼容：
+
+<pre>
+var body = document.body;
+if(body.nodeType === 1){
+    alert("Element!");
+}
+</pre>
+
+确定 nodeType 后，可以使用 nodeName 和 nodeValue 来了解节点的更多信息。
+
+<pre>
+var body = document.body;
+var name,val;
+if(body.nodeType === 1){
+    name = body.nodeName;
+    val = body.nodeValue;
+    alert("nodeName:" + name + " nodeValue:" + val);	//"nodeName: BODY nodeValue:null"
+}
+</pre>
+
+对于元素节点，nodeName 是标签名， nodeValue 始终为 null。
+
+###节点关系
+
