@@ -8,6 +8,8 @@ tags: ["HTML","DOM","XML"]
 ---
 {% include JB/setup %}
 
+##概览
+
 DOM（文档对象模型）是针对 HTML 和 XML 文档的一个 API。描绘了一个层次化的节点树，允许开发人员添加、移除、修改页面的某一部分。
 
 举个 🌰：
@@ -79,5 +81,59 @@ if(body.nodeType === 1){
 
 对于元素节点，nodeName 是标签名， nodeValue 始终为 null。
 
+ownerDocument 也是所有节点都有的一个属性，指向表示整个文档的文档节点。
+
 ###节点关系
 
+节点关系类似家族关系。
+
+**子节点：** `childNodes`。其中保存着类数组对象 NodeList，能够动态反映 DOM 的结构变化。
+
+访问保存在 NodeList 中的节点的两种方法：
+
+<pre>
+var firstChild = someNode.childNodes[0];
+var secondChild = someNode.childNodes.item(1);
+</pre>
+
+**父节点：** `parentNodes`。
+
+**兄弟节点：** `nextSibling`、`previousSibling`。
+
+检测某节点是否有子节点，可以用`hasChildNodes()`方法。
+
+###操作节点
+
+`appendChild(要插入的节点)`：在 childNodes 列表末尾添加一个节点。若节点已在文档中，则将它移动到新位置。该方法返回新增节点。
+
+`insertBefore(要插入的节点,参照节点)`：在 childNodes 列表特定位置插入节点。新插入节点将变为参照节点的前一个兄弟节点（即 previousSibling）。该方法返回新增节点。
+
+`replace(要插入的节点,要移除的节点)`： 替换节点。该方法返回要移除的（被替换的）节点。
+
+`removeChild(要移除的节点)`： 该方法返回被移除的节点。
+
+`cloneNode(布尔值)`：创建调用该方法的节点的副本。参数为 true，深复制，即复制节点及整个子节点树；参数为 false，浅复制，即只复制节点本身。节点副本归属于文档，没有指定的父节点。
+
+`normalize()`： 处理文档树中的文本节点。
+
+##节点类型
+
+###Document 类型
+
+document 对象是 window 对象的一个属性，表示整个 HTML 页面。
+
+***
+
+Document 类型的特征：
+
+**nodeType:**	9
+
+**nodeName:**	"#document"
+
+**nodeValue:**	null
+
+**parentNode:**	null
+
+**ownerDocument:**	null
+
+***
