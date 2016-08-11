@@ -122,9 +122,8 @@ var secondChild = someNode.childNodes.item(1);
 
 document 对象是 window 对象的一个属性，表示整个 HTML 页面。
 
-***
 
-Document 类型的特征：
+####Document 类型的特征：
 
 **nodeType:**	9
 
@@ -136,4 +135,85 @@ Document 类型的特征：
 
 **ownerDocument:**	null
 
-***
+####关于文档的子节点：
+
+<pre>
+document.documentElement	//取得对&lt;html>的引用
+document.body	//取得对&lt;body>的引用
+document.doctype	//取得对&lt;!DOCTYPE>的引用
+</pre>
+
+其中，浏览器对`document.doctype`的支持有很大差异，因而该属性用处有限。
+
+####关于文档信息：
+
+<pre>
+document.title	//取得（设置）文档标题
+document.URL	//取得完整URL
+document.domain	//取得（设置）域名
+document.referrer	//取得来源页面的URL
+</pre>
+
+####关于查找方法：
+
+<pre>
+1. document.getElementById()	//返回严格匹配的相应元素ID||null
+</pre>
+
+在命名元素 ID 时，尽量不与表单的 name 属性重复。否则某些情况将获取错误的元素。
+
+<pre>
+2. document.getElementsByTagName()	//返回动态集合，HTMLCollection对象
+</pre>
+
+通过 name 特性，可以取得集合中的项：
+
+假设有`<img src="she.gif" name="sheImg">`
+
+<pre>
+var imgs = document.getElementByTagName("img");
+//字符串索引访问
+var sheImg = imgs.namedItem("sheImg");
+//方括号语法访问
+var sheImg = imgs["sheImg"];
+</pre>
+
+<pre>
+3. document.getElementByName()	//HTMLDocument独有方法，返回给定name所有元素
+</pre>
+
+####关于文档写入：
+
+4个方法，皆接收一个字符串参数：
+
+1. 	`write()`	原样写入
+2. `writeln()`字符串末尾加换行符（\n）
+3. `open()`	打开网页输出流
+4. `close()`	关闭网页输出流
+
+###Element 类型
+
+####Element 类型的特征
+
+**nodeType:**	1
+
+**nodeName:**	元素的标签名（与 tagName 返回相同值）
+
+**nodeValue:**	null
+
+**parentNode:**	Document || Element
+
+####HTML元素属性
+
+每个 HTML 元素都有以下特性：
+
+`id`
+
+`title`
+
+`lang`
+
+`dir`
+
+`className`
+
