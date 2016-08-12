@@ -219,11 +219,58 @@ var sheImg = imgs["sheImg"];
 
 ####操作特性
 
-操作特性的 DOM 方法主要有 3 个，可以针对包括以 HTMLElement 类型属性定义的任何特性使用：
+操作特性的 DOM 方法主要有 3 个，可以针对包括以 HTMLElement 类型属性定义的任何特性使用。
+
+有`<div id="aDiv"></div>`，取得该节点`var div = document.getElementById("aDiv");`。
 
 1. `getAttribute(实际特性名)`
 	
-	有两类特殊特性：style，onclick。
+	有两类特殊特性：style，onclick。style 通过`getAttribute()`访问，返回 CSS 文本；通过属性访问则返回一个对象。onclick 通过`getAttribute()`访问，返回相应代码字符串；通过属性访问则返回 JavaScript 函数。开发时通常用属性操作 DOM。
+	
+	<pre>
+	alert(div.getAttribute("id"));	//"aDiv"
+	</pre>
+	
 2. `setAttribute(要设置的特性名,要设置的特性值)`
+
 3. `removeAttribute(实际特性名)`
 
+	删除特性和特性的值。IE6 以前不支持此方法。
+
+P.S. 特性名称不区分大小写。
+
+####创建元素
+
+用`document.createElement(要创建元素的标签名)`方法可以创建新元素。下面是它的两种示例用法：
+
+<pre>
+var div = document.createElement("div");
+</pre>
+
+<pre>
+var div = document.createElement("&lt;div id=\"aDiv\" class=\"divs\"></div>");
+</pre>
+
+###Text 类型
+
+文本节点，包含纯文本，可以包含转义后的 HTML 字符，不能包含 HTML 代码。
+
+####Text 类型的特征
+
+**nodeType:**	3
+
+**nodeName:**	"#text"
+
+**nodeValue:**	节点所包含的文本（与 data 属性访问结果相同）
+
+**parentNode:**	Element
+
+####操作文本节点
+
+`document.createTextNode()`	创建新文本节点。
+
+`包含多个文本节点的父元素.normalize()`	合并相邻文本节点。
+
+##测试
+
+本文代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/nodeType/)。
