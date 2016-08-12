@@ -209,11 +209,21 @@ var sheImg = imgs["sheImg"];
 
 `id`
 
-`title`
+`title`，有关元素的附加说明信息，一般通过工具条可提示（鼠标悬浮可见）。
 
-`lang`
+`lang`，元素内容的语言代码，很少使用。
 
-`dir`
+`dir`，语言的方向。"ltr"，"rtl"。
 
 `className`
+
+####操作特性
+
+操作特性的 DOM 方法主要有 3 个，可以针对包括以 HTMLElement 类型属性定义的任何特性使用：
+
+1. `getAttribute(实际特性名)`
+	
+	有两类特殊特性：style，onclick。
+2. `setAttribute(要设置的特性名,要设置的特性值)`
+3. `removeAttribute(实际特性名)`
 
