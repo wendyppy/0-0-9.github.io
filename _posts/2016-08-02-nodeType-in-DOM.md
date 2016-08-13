@@ -273,4 +273,4 @@ var div = document.createElement("&lt;div id=\"aDiv\" class=\"divs\"></div>");
 
 ##测试
 
-本文代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/nodeType/)。
+观看本文代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/nodeType/)。
