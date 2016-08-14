@@ -3,7 +3,7 @@ layout: post
 title: "JavaScript中的事件"
 keywords: ["JavaScript","事件","js","event","node"]
 description: "介绍JavaScript中的事件"
-category: "JavaScript"
+category: "DOM"
 tags: ["JavaScript","DOM"]
 ---
 {% include JB/setup %}
@@ -59,7 +59,7 @@ btn.onclick = function(){
 };
 </pre>
 
-以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。
+以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。注意，对每个事件只支持一个事件处理程序。
 
 <pre>
 //删除上一段代码定义的事件处理程序
@@ -77,6 +77,8 @@ DOM2级事件处理程序定义了两个方法：
 `removeEventListener(要处理的事件名,事件处理程序函数,布尔值)`
 
 其中，参数的布尔值为 true，捕获阶段调用事件处理程序；为 false，冒泡阶段调用事件处理程序。（建议该值用 false）
+
+可以为一个元素添加多个事件，事件发生顺序按代码先后顺序。
 
 <pre>
 var btn = document.getElementById("ab3");
@@ -100,8 +102,110 @@ btn.removeEventListener("click",showId,false);
 
 `detachEvent(事件处理程序名称,事件处理程序函数)`
 
+<pre>
+var btn = document.getElementById("ab5");
+var showThis = function(){
+    alert(this === window);	//true
+}
+btn.attachEvent("onclick", showThis);
+</pre>
 
+`attachEvent()`中，事件处理的作用域为全局作用域。可以为一个元素添加多个事件，事件发生顺序与代码先后顺序相反。
+
+<pre>
+btn.detachEvent("onclick", showThis);
+</pre>
+
+###跨浏览器的事件处理程序
+
+将方法封装在 EventUtil 对象里（该对象封装了处理浏览器间差异的通用方法）：
+
+<pre>
+var EventUtil = {
+    addHandler: function(ele, type, handler) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handler, false);
+        } else if (ele.attachEvent) {
+            ele.attachEvent("on" + type, handler);
+        } else {
+            ele["on" + type] = handler;
+        }
+    },
+    removeHandler: function(ele, type, handler) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handler, false);
+        } else if (ele.detachEvent) {
+            ele.detachEvent("on" + type, handler);
+        } else {
+            ele["on" + type] = null;
+        }
+    }
+};
+</pre>
+
+你可以这样调用：
+
+<pre>
+var btn6 = document.getElementById("ab6");
+var sayHello = function(){
+    alert("hello hello");
+}
+EventUtil.addHandler(btn6, "click", sayHello);
+</pre>
+
+##事件对象
+
+触发 DOM 上某个事件时，会产生一个事件对象 event，该对象包含所有与事件有关的信息。所有浏览器都支持 event，但支持方式不同。
+
+###跨浏览器的事件对象
+
+<pre>
+var EventUtil = {
+    addHandler: function(ele, type, handler) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handler, false);
+        } else if (ele.attachEvent) {
+            ele.attachEvent("on" + type, handler);
+        } else {
+            ele["on" + type] = handler;
+        }
+    },
+    //返回对event对象的引用
+    getEvent: function(event) {
+        return event ? event : window.event;
+    },
+    //返回事件的目标
+    getTarget: function(event) {
+        return event.target || event.srcElement;
+    },
+    //取消事件的默认行为
+    preventDefault: function(event) {
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+    removeHandler: function(ele, type, handler) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handler, false);
+        } else if (ele.detachEvent) {
+            ele.detachEvent("on" + type, handler);
+        } else {
+            ele["on" + type] = null;
+        }
+    },
+    //阻止事件冒泡
+    stopPropagation: function(event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+};
+</pre>
 
 ##测试
 
-观看本文代码的演示效果，请移步[这里]
+观看本文代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/event/)。
