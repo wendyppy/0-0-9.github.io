@@ -467,6 +467,10 @@ article img {
 	border: 1px solid #b3b3b3;
 	max-width: 98.5%;
 }
+article .smPic{
+	max-width: 250px;
+	max-height: 250px;
+}
 input {
 	background-color: #fcfcfc;
 	border: #ddd 1px solid;
@@ -505,6 +509,7 @@ tbody tr:hover {
   padding: 0 3px;
   border-radius: 4px;
 }
+
 code, pre {
 	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
 	font-size: inherit;
