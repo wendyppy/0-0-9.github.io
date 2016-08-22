@@ -37,9 +37,7 @@ JavaScript 脚本是绘制熊本的重要部分。在动手前，我们先找一
 
 <center><div class="smPic">![](http://cdn.saymagic.cn/o_1aqojfiqd14tv1qqacsf1u2emcc9.jpg)</div></center>
 
-这个大体能分成三部分：
-
-背景、圈里的熊、文字。
+这个大体能分成三部分：**背景、圈里的熊、文字**。
 
 ###框架
 
@@ -133,7 +131,7 @@ paintCircle(ctx, 250, 224, 191, 2, "#fff");
 
 目前效果：
 
-<center>![](http://cdn.saymagic.cn/o_1aqpbbkh51pcaqpk1cvd34sk5ie.png)</center>
+<center><div class="smPic">![](http://cdn.saymagic.cn/o_1aqpbbkh51pcaqpk1cvd34sk5ie.png)</div></center>
 
 ###熊耳朵
 
