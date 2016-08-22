@@ -35,7 +35,7 @@ canvas 是 H5 一个超棒的元素，能创造好多漂亮的效果。现在就
 
 JavaScript 脚本是绘制熊本的重要部分。在动手前，我们先找一张成品图进行模仿：
 
-<center class="smPic">![](http://cdn.saymagic.cn/o_1aqojfiqd14tv1qqacsf1u2emcc9.jpg)</center>
+<center><div class="smPic">![](http://cdn.saymagic.cn/o_1aqojfiqd14tv1qqacsf1u2emcc9.jpg)</div></center>
 
 这个大体能分成三部分：
 
