@@ -537,3 +537,7 @@ window.onload = function() {
 <center><div class="smPic">![](http://cdn.saymagic.cn/o_1aqq369m11jrs4o4g3o7pe10119.png)</div></center>
 
 完成！现在已经能接受熊本熊发自灵魂的拷问了——“你为什么不学习？！”
+
+##测试
+
+用这几个封装好的函数加一点别的小功能，就可以做成一个网页小应用啦！[这里](http://page.ilanyy.com/tKumamon/)是我做的一个能生成熊本熊图片的网页。（目前只推荐下载`png`格式的图片）
