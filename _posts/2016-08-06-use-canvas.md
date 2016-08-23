@@ -121,4 +121,4 @@ radians = (Math.PI / 180) * degrees
 
 ##测试
 
-观看本文中具体代码效果，请移步。
+观看本文中具体代码效果，请移步[这里](http://blog.ilanyy.com/example/canvas/)。
