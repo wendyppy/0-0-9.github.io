@@ -141,3 +141,158 @@ request.onreadystatechange = function() {
     }
 };
 </pre>
+
+##json
+
+使用 Ajax 传递数据，基本都采用 json 格式。
+
+json 介绍：[什么是 json](http://json.cn/json/wiki.html){:rel="nofollow"}
+
+在线 json 校验工具：[jsonlint](http://jsonlint.com/)，[json.cn](http://json.cn/){:rel="nofollow"}
+
+某项目 JavaScript 文件节选：
+
+<pre>
+var EventUtil = {
+    addHandler: function(ele, type, handler) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handler, false);
+        } else if (ele.attachEvent) {
+            ele.attachEvent("on" + type, handler);
+        } else {
+            ele["on" + type] = handler;
+        }
+    }
+};
+
+var searchBtn = document.getElementById("searchBtn");
+var searchFn = function() {
+    var keywordVal = document.getElementById("keyword").value;
+    var request = new XMLHttpRequest();
+    request.open("GET", "server.php?number=" + keywordVal);
+    request.send();
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                var response = JSON.parse(request.responseText);
+                if (response.success) {
+                    document.getElementById("searchResult").innerHTML = response.msg;
+                } else {
+                    document.getElementById("searchResult").innerHTML = "error: " + response.msg;
+                }
+            } else {
+                alert("出错！错误代码" + request.status);
+            }
+        }
+    };
+};
+
+var saveBtn = document.getElementById("saveBtn");
+var saveFn = function() {
+    var request = new XMLHttpRequest();
+    request.open("POST", "server.php");
+    var data = "name=" + document.getElementById("staffName").value +
+        "&number=" + document.getElementById("staffNum").value +
+        "&sex=" + document.getElementById("staffSex").value +
+        "&job=" + document.getElementById("staffJob").value;
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(data);
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                var response = JSON.parse(request.responseText);
+                if (response.success) {
+                    document.getElementById("createResult").innerHTML = response.msg;
+                } else {
+                    document.getElementById("createResult").innerHTML = "error: " + response.msg;
+                }
+            } else {
+                alert("出错！错误代码" + request.status);
+            }
+        }
+    };
+}
+
+window.onload = function() {
+    EventUtil.addHandler(searchBtn, "click", searchFn);
+    EventUtil.addHandler(saveBtn, "click", saveFn);
+};
+</pre>
+
+[例子](http://blog.ilanyy.com/example/json/)
+
+##jquery中的Ajax
+
+<pre>
+$.ajax([settings])
+</pre>
+
+**type：**类型，GET | POST，默认 GET
+
+**url：**发送请求的地址
+
+**data：**是一个对象，连同请求一块发送到服务器中，主要是 POST 请求使用
+
+**dataType：**预期服务器返回的数据类型。若不指定，jquery 将根据 HTTP 包 MIME 信息智能判断，可设置为`json`。
+
+**success：**是一个方法，请求成功后的回调函数。参数传入返回后的数据。
+
+**error：**是一个方法，请求失败后调用该函数。函数参数需传入 XMLHttpRequest 对象。
+
+用 jquery 改写上面的 JavaScript 文件：
+
+<pre>
+$(document).ready(function() {
+    $("#searchBtn").click(function() {
+        var keywordVal = $("#keyword").val();
+        $.ajax({
+            url: "serverjson.php?number=" + keywordVal,
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                if (data.success) {
+                    $("#searchResult").html(data.msg);
+                } else {
+                    $("#searchResult").html("error: " + data.msg);
+                }
+            },
+            error: function(xhr) {
+                alert("出错！错误代码" + xhr.status);
+            }
+        });
+    });
+    $("#saveBtn").click(function() {
+        $.ajax({
+            url: "serverjson.php",
+            type: "POST",
+            data: {
+                name: $('#staffName').val(),
+                number: $('#staffNum').val(),
+                sex: $('#staffSex').val(),
+                job: $('#staffJob').val()
+            },
+            dataType: "json",
+            success: function(data) {
+                if (data.success) {
+                    $("#createResult").html(data.msg);
+                } else {
+                    $("#createResult").html("error: " + data.msg);
+                }
+            },
+            error: function(xhr) {
+                alert("出错！错误代码" + xhr.status);
+            }
+        });
+    });
+});
+</pre>
+
+##跨域
+
+先看看一个域名地址的组成：
+
+![](http://cdn.saymagic.cn/o_1ar855up61k963cgpvv147017goe.jpg)
+
+当（图中标红部分）协议、子域名、主域名、端口号任意一个不同时，都算作不同域。不同域之间相互请求资源，叫“跨域”。
+
+JavaScript “同源策略”，出于安全考虑，不允许跨域调用其他页面的对象。
