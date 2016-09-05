@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "css网页布局"
-keywords: ["css","网页布局","自适应"]
-description: "自适应网页布局"
+title: "css浮动布局"
+keywords: ["css","网页布局","自适应","浮动"]
+description: "利用CSS浮动特性进行网页布局"
 category: "css"
 tags: ["css","html"]
 ---
