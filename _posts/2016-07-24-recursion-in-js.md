@@ -58,6 +58,6 @@ var factorial = (function fn(num){
 
 ###测试
 
-FreeCodeCamp 上有一道算法基础题就考察了递归算法的基本应用。[这里](http://blog.ilanyy.com/fcc/fcc-algor-Factorialize-a-Number.html)是题目以及我的解法。
+FreeCodeCamp 上有一道算法基础题就考察了递归算法的基本应用。[这里](http://blog.hardworking.top/fcc/fcc-algor-Factorialize-a-Number.html)是题目以及我的解法。
 
-看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/recursion/)。
+看本文中代码的演示效果，请移步[这里](http://blog.hardworking.top/example/recursion/)。

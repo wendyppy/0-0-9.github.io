@@ -20,6 +20,7 @@ tags: ["Sublime Text3"]
     	[
     		"Vintage"
     	],
+    	"fold_buttons": true,
     	"fade_fold_buttons": false,// 不管鼠标在不在行号边栏，代码折叠按钮一直显示
     	// "save_on_focus_lost": true,//焦点丢失后自动保存
     	"show_encoding": true,//开启后，在编辑器的右下角会显示当前文件的编码
@@ -53,6 +54,7 @@ tags: ["Sublime Text3"]
     	"color_scheme": "Packages/Theme - Spacegray/base16-ocean.dark.tmTheme",
     	"draw_white_space": "all",
     	"enable_tab_scrolling": false,
+    	"fold_buttons": true,
     	"fade_fold_buttons": false,
     	"font_face": "Source Code Pro",
     	"font_size": 17,

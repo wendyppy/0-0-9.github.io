@@ -224,13 +224,13 @@ var sheImg = imgs["sheImg"];
 有`<div id="aDiv"></div>`，取得该节点`var div = document.getElementById("aDiv");`。
 
 1. `getAttribute(实际特性名)`
-	
+
 	有两类特殊特性：style，onclick。style 通过`getAttribute()`访问，返回 CSS 文本；通过属性访问则返回一个对象。onclick 通过`getAttribute()`访问，返回相应代码字符串；通过属性访问则返回 JavaScript 函数。开发时通常用属性操作 DOM。
-	
+
 	<pre>
 	alert(div.getAttribute("id"));	//"aDiv"
 	</pre>
-	
+
 2. `setAttribute(要设置的特性名,要设置的特性值)`
 
 3. `removeAttribute(实际特性名)`
@@ -273,4 +273,4 @@ var div = document.createElement("&lt;div id=\"aDiv\" class=\"divs\"></div>");
 
 ##测试
 
-观看本文代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/nodeType/)。
+观看本文代码的演示效果，请移步[这里](http://blog.hardworking.top/example/nodeType/)。

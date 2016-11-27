@@ -23,7 +23,7 @@ DOM 事件流中，`<div>`在捕获阶段不会接收到事件。在处于目标
 用户或浏览器执行的动作是事件，如 click，load，mouseover。
 
 事件处理程序是响应事件的函数，以 "on" 开头，如 onclick，onload，onmouseover。
- 
+
 ###HTML事件处理程序
 
 用与相应事件处理程序同名的 HTML 特性来指定事件。
@@ -208,4 +208,4 @@ var EventUtil = {
 
 ##测试
 
-观看本文代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/event/)。
+观看本文代码的演示效果，请移步[这里](http://blog.hardworking.top/example/event/)。

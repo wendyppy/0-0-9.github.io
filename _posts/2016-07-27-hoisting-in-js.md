@@ -147,4 +147,4 @@ foo = "Selina";
 
 ###测试
 
-看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/hoisting/)。
+看本文中代码的演示效果，请移步[这里](http://blog.hardworking.top/example/hoisting/)。

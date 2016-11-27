@@ -63,7 +63,7 @@ PS.通过构造函数创建的函数是例外，它们的`[[scope]]`属性总是
 
 <pre>作用域链 = 执行环境活动对象|变量对象 + [[scope]];</pre>
 
-如果你对这个知识点还不太了解，可移步 [JavaScript中的执行环境与作用域链](http://blog.ilanyy.com/javascript/scope-in-js.html)。
+如果你对这个知识点还不太了解，可移步 [JavaScript中的执行环境与作用域链](http://blog.hardworking.top/javascript/scope-in-js.html)。
 
 ###JavaScript中的闭包
 
@@ -193,4 +193,4 @@ alert(obj.getName()());	//"this is obj"
 
 ##测试
 
-看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/closures/)。
+看本文中代码的演示效果，请移步[这里](http://blog.hardworking.top/example/closures/)。

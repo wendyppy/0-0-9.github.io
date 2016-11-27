@@ -138,7 +138,7 @@ alert(child2.girls);	//"Selina,Hebe,Ella"
 
 函数是在特定环境中执行代码的对象，因此用`apply()`和`call()`就可以在（将来）新创建的对象上执行构造函数。
 
-借用构造函数带来的另一个好处就是可以在子类中向超类的构造函数传递参数。像这样： ↓↓ 
+借用构造函数带来的另一个好处就是可以在子类中向超类的构造函数传递参数。像这样： ↓↓
 
 <pre>
 function SuperFn(name){
@@ -200,4 +200,4 @@ child2.sayAge();	//17
 
 ##测试
 
-看本文中代码的演示效果，请移步[这里](http://blog.ilanyy.com/example/inherit/)。
+看本文中代码的演示效果，请移步[这里](http://blog.hardworking.top/example/inherit/)。

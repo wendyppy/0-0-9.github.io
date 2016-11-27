@@ -18,7 +18,7 @@ tags: ["css","html"]
 
 <center>![](http://cdn.saymagic.cn/o_1arurutnf10uc19iq118814k01cq29.png)</center>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ##两列布局
 
@@ -45,7 +45,7 @@ tags: ["css","html"]
 
 <center>![](http://cdn.saymagic.cn/o_1arus6qqu2tcqe7f706pl1d15e.png)</center>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ###两列自适应
 
@@ -81,7 +81,7 @@ tags: ["css","html"]
 .right-child { margin-left: 200px; }
 </pre>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ###左侧自适应，右侧定宽
 
@@ -105,7 +105,7 @@ tags: ["css","html"]
 .right { float: right; width: 190px; margin-left: -190px;}
 </pre>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ##三列布局
 
@@ -131,7 +131,7 @@ tags: ["css","html"]
 .mid-child { margin: 0 200px 0 110px; }
 </pre>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ###中右定宽，左边自适应
 
@@ -152,10 +152,10 @@ tags: ["css","html"]
 .left { float: left; margin-right: -290px; width: 100%; }
 .left-child { margin-right: 300px; }
 .mid { float: right; width: 190px; }
-.right { float: right; width: 90px; margin-left: 10px; }    
+.right { float: right; width: 90px; margin-left: 10px; }
 </pre>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ###中左定宽，右边自适应
 
@@ -179,7 +179,7 @@ tags: ["css","html"]
 .right-child { margin-left: 300px; }
 </pre>
 
-效果： [所有演示均在此地址](http://blog.ilanyy.com/example/csslayout/)
+效果： [所有演示均在此地址](http://blog.hardworking.top/example/csslayout/)
 
 ##闭合浮动
 

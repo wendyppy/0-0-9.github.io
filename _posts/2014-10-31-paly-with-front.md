@@ -3,8 +3,8 @@ layout: post
 title: "玩坏前端"
 keywords: ["前端 ","休闲"]
 description: "前端休闲玩法"
-category: "html5"
-tags: ["html5"]
+category: "HTML5"
+tags: ["HTML5"]
 ---
 {% include JB/setup %}
 

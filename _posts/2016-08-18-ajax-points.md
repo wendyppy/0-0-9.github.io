@@ -146,9 +146,9 @@ request.onreadystatechange = function() {
 
 使用 Ajax 传递数据，基本都采用 json 格式。
 
-json 介绍：[什么是 json](http://json.cn/json/wiki.html){:rel="nofollow"}
+json 介绍：[什么是 json](http://json.cn/json/wiki.html)
 
-在线 json 校验工具：[jsonlint](http://jsonlint.com/)，[json.cn](http://json.cn/){:rel="nofollow"}
+在线 json 校验工具：[jsonlint](http://jsonlint.com/)，[json.cn](http://json.cn/)
 
 某项目 JavaScript 文件节选：
 
@@ -219,7 +219,7 @@ window.onload = function() {
 };
 </pre>
 
-[例子](http://blog.ilanyy.com/example/json/)
+[例子](http://blog.hardworking.top/example/json/)
 
 ##jquery中的Ajax
 
@@ -296,3 +296,35 @@ $(document).ready(function() {
 当（图中标红部分）协议、子域名、主域名、端口号任意一个不同时，都算作不同域。不同域之间相互请求资源，叫“跨域”。
 
 JavaScript “同源策略”，出于安全考虑，不允许跨域调用其他页面的对象。
+
+###服务端代理
+
+同源服务器请求跨域页面，属于后端技术。不做讨论。
+
+###JSONP
+
+只对 GET 请求起效果。（不支持 POST 请求）
+
+假设上面 jQuery + Ajax 的示例代码中的 GET 请求想访问 跨域的资源 serverjson.php，为使代码支持跨域，可以这样改动：
+
+1. 对 JavaScript 文件：将`dataType: "json"`改为`dataType: "jsonp"`，增加`jsonp: "cb123"`。其中，cb123 是自定义的名称。
+2. 对 serverjson.php 文件：在相应的事件处理方法中，增加`$jsonp = $_GET["cb123"];`，改写返回值`$result = '{"success":false,"msg":"没有找到员工。"}';`为`$result = jsonp.'({"success":false,"msg":"没有找到员工。"})';`；继续改写返回值`$result = '{"success":true,"msg":"找到员工：员工编号：' . $value["number"] .'，员工姓名：' . $value["name"] .'，员工性别：' . $value["sex"] .'，员工职位：' . $value["job"] . '"}';`为`$result = jsonp.'({"success":true,"msg":"找到员工：员工编号：' . $value["number"] .'，员工姓名：' . $value["name"] .'，员工性别：' . $value["sex"] .'，员工职位：' . $value["job"] . '"})';`。
+
+###XHR2
+
+HTML5 提供的 XMLHttpRequest Level2 已经实现了跨域访问和其它一些功能。可惜 IE10 以下版本并不支持。
+
+使用时只需微改服务器端（如果你的服务端语言是 php 或者 java）：
+
+<pre>
+//*表示允许全部域名跨域请求
+header('Access-Control-Allow-Origin:*');
+//*允许a，b网站跨域请求
+header('Access-Control-Allow-Origin:www.a.com,www.b.com');
+
+header('Access-Control-Allow-Methods:POST,GET');
+</pre>
+
+查看某个网址的资源是否允许跨域访问，可以通过开发者工具打开`Network`标签，刷新页面，查看指定资源的请求头中的`Access-Control-Allow-Origin`属性。像这样 ↓↓：
+
+![](http://cdn.saymagic.cn/o_1arb6rc2f1bengtm1v8v1s111ehp9.png)
