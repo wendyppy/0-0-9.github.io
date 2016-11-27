@@ -30,8 +30,8 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://blog.ilanyy.com
-cdn_url : http://blog.ilanyy.com
+production_url : http://www.hardworking.top
+cdn_url : http://www.hardworking.top
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -60,7 +60,7 @@ JB :
   #   - Only the following values are falsy: ["", null, false]
   #   - When setting BASE_PATH it must be a valid url.
   #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : http://blog.ilanyy.com
+  BASE_PATH : http://www.hardworking.top
 
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
@@ -70,7 +70,7 @@ JB :
   #   http://s3.amazonaws.com/yoursite/themes/watermelon
   #   /assets
   #
-  ASSET_PATH : http://blog.ilanyy.com/assets/themes/twitter
+  ASSET_PATH : http://www.hardworking.top/assets/themes/twitter
   IMAGE_PATH : false
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
@@ -108,16 +108,6 @@ JB :
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #
-  analytics :
-    provider : baidu
-    baidu :
-      tracking_id : 'a7c01c4b55f06cf1df9cabb9b18a65a3'
-    google :
-      tracking_id : 'UA-41189818-1'
-    getclicky :
-      site_id :
-    mixpanel :
-      token : '_MIXPANEL_TOKEN_'
 
   # Settings for sharing helper.
   # Sharing is for things like tweet, plusone, like, reddit buttons etc.
