@@ -12,19 +12,19 @@ tags: ["css","html"]
 
 （供参考：）
 
-###1.影响文档流的属性
+####1.影响文档流的属性
 如：`display, visibility, float, clear, position, top, z-index, table-layout,...`
 
-###2.自身盒模型等相关属性
+####2.自身盒模型等相关属性
 如：`width, height, overflow, margin, padding, border, outline,...`
 
-###3.文字、排版相关属性
+####3.文字、排版相关属性
 如：`font, line-height, text-align, text-indent, letter-spacing, white-space, vertical-align,...`
 
-###4.装饰性属性
+####4.装饰性属性
 如：`color, background, opacity, cursor,...`
 
-###5.生成内容的属性
+####5.生成内容的属性
 如：`content, quotes, list-style,...`
 
 ## 选择器语义化命名
